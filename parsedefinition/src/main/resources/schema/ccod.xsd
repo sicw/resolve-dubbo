@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://channelsoft.com/schema/ccod"
+           xmlns="http://channelsoft.com/schema/ccod"
+           elementFormDefault="qualified">
+
+    <xs:element name="umg">
+        <xs:complexType>
+            <xs:sequence>
+                <!--<xs:element name="a" type="xs:string"/>-->
+            </xs:sequence>
+            <xs:attribute name="class" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
