@@ -12,6 +12,7 @@
     <module>shutdownhook</module>
       <module>parsedefinition</module>
       <module>script</module>
+    <module>publishevent</module>
   </modules>
 
   <name>resolve-dubbo</name>
@@ -30,6 +31,11 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>4.3.12.RELEASE</version>
     </dependency>
   </dependencies>
 
