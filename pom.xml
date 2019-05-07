@@ -14,6 +14,7 @@
       <module>script</module>
     <module>publishevent</module>
       <module>registry</module>
+      <module>springfactorybean</module>
   </modules>
 
   <name>resolve-dubbo</name>
