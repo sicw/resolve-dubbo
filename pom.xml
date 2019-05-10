@@ -15,6 +15,7 @@
     <module>publishevent</module>
       <module>registry</module>
       <module>springfactorybean</module>
+      <module>provider-consumer</module>
   </modules>
 
   <name>resolve-dubbo</name>
