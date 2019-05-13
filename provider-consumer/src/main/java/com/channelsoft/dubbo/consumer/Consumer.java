@@ -12,11 +12,11 @@ public class Consumer {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"consumer.xml"});
         context.start();
         DemoService demoService = (DemoService)context.getBean("demoService");
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             String hello = demoService.sayHello("world");
             System.out.println( hello );
             Thread.sleep(2000);
         }
-        Thread.sleep(300000);
+        Thread.sleep(10000);
     }
 }

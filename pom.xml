@@ -16,6 +16,7 @@
       <module>registry</module>
       <module>springfactorybean</module>
       <module>provider-consumer</module>
+      <module>multithread-asyncgetmonitor</module>
   </modules>
 
   <name>resolve-dubbo</name>
