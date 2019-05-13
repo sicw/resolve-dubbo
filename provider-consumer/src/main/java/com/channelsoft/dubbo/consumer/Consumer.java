@@ -4,13 +4,19 @@ import com.channelsoft.dubbo.DemoService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.io.IOException;
+
 public class Consumer {
     @Test
-    public void testConsumer(){
+    public void testConsumer() throws InterruptedException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"consumer.xml"});
         context.start();
-        DemoService demoService = (DemoService)context.getBean("demoService"); // 获取远程服务代理
-        String hello = demoService.sayHello("world"); // 执行远程方法
-        System.out.println( hello ); // 显示调用结果
+        DemoService demoService = (DemoService)context.getBean("demoService");
+        for (int i = 0; i < 1; i++) {
+            String hello = demoService.sayHello("world");
+            System.out.println( hello );
+            Thread.sleep(2000);
+        }
+        Thread.sleep(300000);
     }
 }

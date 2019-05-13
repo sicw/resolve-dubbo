@@ -1,4 +1,4 @@
-package com.channelsoft.dubbo.provider;
+package com.channelsoft.dubbo.provider.serviceimpl;
 
 import com.channelsoft.dubbo.DemoService;
 
