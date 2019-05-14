@@ -13,8 +13,8 @@ public class TestApp {
     private static DubboExecuteLimitFilter limitFilter = new DubboExecuteLimitFilter();
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 1; i <= 11; i++) {
-            new Thread(new RunTask("url"+i)).start();
+        for (int i = 1; i <= 4; i++) {
+            new Thread(new RunTask("url")).start();
         }
         Thread.sleep(500);
         latch.countDown();
