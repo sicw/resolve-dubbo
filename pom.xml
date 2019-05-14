@@ -17,6 +17,8 @@
       <module>springfactorybean</module>
       <module>provider-consumer</module>
       <module>multithread-asyncgetmonitor</module>
+      <module>loadbalance</module>
+      <module>executelimitfilter</module>
   </modules>
 
   <name>resolve-dubbo</name>
