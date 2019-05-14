@@ -13,7 +13,7 @@ public class DubboRpcStatus {
 
     private AtomicInteger actives = new AtomicInteger();
 
-    private static DubboRpcStatus getRpcStatus(String key){
+    public static DubboRpcStatus getRpcStatus(String key){
         DubboRpcStatus status = serviceStatistics.get(key);
         if (status == null) {
             serviceStatistics.putIfAbsent(key, new DubboRpcStatus());
@@ -22,18 +22,17 @@ public class DubboRpcStatus {
         return status;
     }
 
-    public static Integer getActives(String key){
-        DubboRpcStatus status = getRpcStatus(key);
-        return status.actives.get();
+    public int getActives(){
+        return actives.get();
     }
 
-    public static void beginCount(String key){
-        DubboRpcStatus status = getRpcStatus(key);
+    public static void beginCount(String url){
+        DubboRpcStatus status = getRpcStatus(url);
         status.actives.incrementAndGet();
     }
 
-    public static void endCount(String key){
-        DubboRpcStatus status = getRpcStatus(key);
+    public static void endCount(String url){
+        DubboRpcStatus status = getRpcStatus(url);
         status.actives.decrementAndGet();
     }
 }
