@@ -2,6 +2,7 @@ package com.channelsoft.executelimit;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -10,6 +11,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class DubboRpcStatus {
     private static ConcurrentMap<String,DubboRpcStatus> serviceStatistics = new ConcurrentHashMap<>();
+
+    private static Semaphore semaphore = null;
 
     private AtomicInteger actives = new AtomicInteger();
 
@@ -24,6 +27,22 @@ public class DubboRpcStatus {
 
     public int getActives(){
         return actives.get();
+    }
+
+    /**
+     * 使用信号量而不使用锁做并发流量控制，这样可以提供程序运行效率
+     * @param permits
+     * @return
+     */
+    public Semaphore getSemaphore(int permits){
+        if (semaphore == null) {
+            synchronized (this) {
+                if (semaphore == null) {
+                    semaphore = new Semaphore(permits);
+                }
+            }
+        }
+        return semaphore;
     }
 
     public static void beginCount(String url){

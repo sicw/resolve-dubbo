@@ -1,5 +1,7 @@
 package com.channelsoft.executelimit;
 
+import java.util.concurrent.Semaphore;
+
 /**
  * 针对url进行线程数限制
  * @author sicwen
@@ -9,9 +11,13 @@ public class DubboExecuteLimitFilter {
 
     public String invoke(String url) throws Exception {
         int max = 3;
+        Semaphore semaphore = null;
+        // max < 0时 如何处理
+        boolean acquireResult = false;
         if (max > 0) {
             DubboRpcStatus status = DubboRpcStatus.getRpcStatus(url);
-            if (status.getActives() >= max) {
+            semaphore = status.getSemaphore(max);
+            if ((acquireResult = semaphore.tryAcquire()) == false) {
                 throw new RuntimeException("actives >= max");
             }
         }
@@ -28,6 +34,9 @@ public class DubboExecuteLimitFilter {
         } finally {
             // 在finally中进行计数器-1
             DubboRpcStatus.endCount(url);
+            if (acquireResult) {
+                semaphore.release();
+            }
         }
         return null;
     }
