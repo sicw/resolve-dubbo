@@ -19,6 +19,8 @@
       <module>multithread-asyncgetmonitor</module>
       <module>loadbalance</module>
       <module>executelimitfilter</module>
+      <module>jcache</module>
+    <module>jdk-spi</module>
   </modules>
 
   <name>resolve-dubbo</name>
