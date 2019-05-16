@@ -19,4 +19,14 @@ public class Consumer {
         }
         Thread.sleep(10000);
     }
+
+    @Test
+    public void testNoRegistry() throws InterruptedException {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"consumer.xml"});
+        context.start();
+        DemoService demoService = (DemoService)context.getBean("demoServiceNoRegistry");
+        String hello = demoService.sayHello("world");
+        System.out.println(hello);
+        Thread.sleep(1000);
+    }
 }
