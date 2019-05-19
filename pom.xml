@@ -21,6 +21,9 @@
       <module>executelimitfilter</module>
       <module>jcache</module>
     <module>jdk-spi</module>
+      <module>stub</module>
+    <module>monitorservice</module>
+      <module>callbacklistener</module>
   </modules>
 
   <name>resolve-dubbo</name>
